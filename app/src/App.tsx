@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './App.scss';
+import { Routes, Route } from 'react-router-dom';
+import Page404 from 'routes/404/404.component';
+import About from 'routes/about/about.component';
+import Navigation from 'components/navigation/navigation.component';
+import Main from 'routes/main/main.component';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>RSSchool task: Component</h1>
+        <Navigation />
+        <Routes>
+          <Route index element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </div>
+    );
+  }
 }
 
 export default App;
